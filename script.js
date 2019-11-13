@@ -2,6 +2,7 @@ let timerBody = document.querySelector('.timerBody'),
     nums = document.querySelector('.nums'),
     btns = document.querySelector('.btns'),
     title = document.querySelector('title'),
+    msAll = 1500000,
     // body = document.querySelector('body'),
     timerNumber = {
         hours : document.querySelector('.hours'),
@@ -28,8 +29,9 @@ btn.start.addEventListener('click', ()=>{
     if(active == false){
         time = Date.parse(new Date());
         intervalId = setInterval(()=>{
-            if(time - Date.parse(new Date()) + 25*1000*60 > 0){
-                updadeTimer(time - Date.parse(new Date()) + 25*1000*60);
+            let tech = time - Date.parse(new Date()) + msAll;
+            if(tech > 0){
+                updadeTimer(tech);
             }else{
                 resetTimer();
                 title.textContent = 'breakTime!';
@@ -41,7 +43,6 @@ btn.start.addEventListener('click', ()=>{
         document.querySelector('[rel="shortcut icon"]').href = 'img/angry.ico';
         active = true;
 
-
     }else{
         resetTimer();
         setTimeout(()=>{btn.start.textContent = 'start';}, 1000);
@@ -52,15 +53,12 @@ btn.reset.addEventListener('click', ()=>{
     clearInterval(intervalId);
     time = Date.parse(new Date());
     intervalId = setInterval(()=>{
-        updadeTimer(time - Date.parse(new Date()) + 25*1000*60);
+        updadeTimer(time - Date.parse(new Date()) + msAll);
     }, 1000);
     btn.start.className += ' stopColor';
     document.querySelector('[rel="shortcut icon"]').href = 'img/angry.ico';
     active = true;
 });
-
-
-
 
 function updadeTimer(ms){
     timerNumber.hours.textContent = ('0' + Math.floor(ms/1000/60/60)).slice(-2) + ':';
@@ -68,6 +66,7 @@ function updadeTimer(ms){
     timerNumber.seconds.textContent = ('0' + Math.floor(ms/1000%60)).slice(-2);
     title.textContent = ('0' +Math.floor(ms/1000/60%60)).slice(-2) + ':' + ('0' + Math.floor(ms/1000%60)).slice(-2) +
     ' pomadoroTimer';
+    loadProgress(100 - Math.floor(ms / msAll * 100));
 }
 
 function resetTimer(){
@@ -76,5 +75,11 @@ function resetTimer(){
     document.querySelector('[rel="shortcut icon"]').href = 'img/smyle.ico';
     active = false;
     clearInterval(intervalId);
-    updadeTimer(1500000);
+    updadeTimer(msAll);
+}
+
+
+function loadProgress(val){
+    timerBody.style.borderRight = Math.floor(window.screen.width/100*val) - 1 + "px #7C4353 solid";
+    timerBody.style.width = (100 - val) + "%";
 }

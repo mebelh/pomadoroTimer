@@ -4,6 +4,7 @@ body{
     padding: 0px;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 .tomatoImg{
@@ -55,4 +56,11 @@ body{
 
 .reset{
     background: #6DA79C;
+}
+
+.loadBox{
+    background: #543440;
+    width: 4%;
+    height: 100%;
+    position: absolute;
 }
