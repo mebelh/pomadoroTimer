@@ -1,0 +1,58 @@
+body{
+    background:#FFDEBD;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.tomatoImg{
+    position: absolute;
+    height: 20%;
+}
+
+.timerBody{
+    background: #404040;
+    position: absolute;
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+}
+
+.nums{
+    display: flex;
+    color: blanchedalmond;
+}
+
+.btn{
+    border-radius: 100%;
+    height: 100%;
+    width: 200px;
+    border: black solid 2px;
+    color: blanchedalmond;
+    font-size: 80%;
+    padding: 20px;
+    padding-top: 20px;
+    transition: 0.4s;
+}
+.btns{
+    margin-left: 2%;
+    display: flex;
+    font-size: 50px;
+}
+
+.timerBody, .timerNumber{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.startColor{
+    background: rgb(109, 167, 128);
+    transition: 0.4s;
+}
+.stopColor{
+    background: #D14B30;
+}
+
+.reset{
+    background: #6DA79C;
+}
